@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import BookModel from '../../models/BookModel';
-// import { Pagination } from '../Utils/Pagination';
+import { Pagination } from '../Utils/Pagination';
 import { SpinnerLoading } from '../Utils/SpinnerLoading';
-// import { SearchBook } from './components/SearchBook';
+import { SearchBook } from './components/SearchBook';
 
 export const SearchBooksPage = () => {
 
@@ -176,9 +176,9 @@ export const SearchBooksPage = () => {
                             <p>
                                 {indexOfFirstBook + 1} to {lastItem} of {totalAmountOfBooks} items:
                             </p>
-                            {/* {books.map(book => (
+                            {books.map(book => (
                                 <SearchBook book={book} key={book.id} />
-                            ))} */}
+                            ))}
                         </>
                         :
                         <div className='m-5'>
@@ -189,9 +189,9 @@ export const SearchBooksPage = () => {
                                 href='#'>Library Services</a>
                         </div>
                     }
-                    {/* {totalPages > 1 &&
+                    {totalPages > 1 &&
                         <Pagination currentPage={currentPage} totalPages={totalPages} paginate={paginate} />
-                    } */}
+                    }
                 </div>
             </div>
         </div>
