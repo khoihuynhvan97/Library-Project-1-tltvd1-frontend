@@ -6,6 +6,7 @@ export const CheckoutAndReviewBox: React.FC<{
   mobile: boolean;
   currentLoansCount: number;
 }> = (props) => {
+  console.log('CheckoutAndReviewBox props:', props);
   return (
     <div
       className={
