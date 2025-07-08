@@ -41,7 +41,7 @@ export const Navbar = () => {
               </li>
               :
               <li>
-                <button className='btn btn-outline-light' onClick={handleLogout}>Logout</button>
+                <button className='btn btn-outline-light' onClick={handleLogout}>Log out</button>
               </li>
             }
           </ul>
