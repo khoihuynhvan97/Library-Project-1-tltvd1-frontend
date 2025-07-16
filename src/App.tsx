@@ -8,22 +8,29 @@ import { SearchBooksPage } from "./layout/SearchBooksPage/SearchBooksPage";
 import { BookCheckoutPage } from "./layout/BookCheckoutPage/BookCheckoutPage";
 import { oktaConfig } from "./lib/oktaConfig";
 import { OktaAuth } from "@okta/okta-auth-js";
-import { Security, LoginCallback } from "@okta/okta-react";
+import { Security, LoginCallback, SecureRoute } from "@okta/okta-react";
 import LoginWidget from "./Auth/LoginWidget";
-
+import { ReviewListPage } from "./layout/BookCheckoutPage/ReviewListPage/ReviewListPage";
+import { ShelfPage } from "./layout/ShelfPage/ShelfPage";
+import RequireAuth from "./layout/Utils/RequireAuth";
+import { MessagesPage } from "./layout/MessagesPage/MessagesPage";
 const oktaAuth = new OktaAuth(oktaConfig);
 
 const App = () => {
   const customAuthHandler = () => {
-    window.location.href = '/login';
+    window.location.href = "/login";
   };
 
   const restoreOriginalUri = async (_oktaAuth: any, originalUri: any) => {
-    window.location.href = originalUri || '/';
+    window.location.href = originalUri || "/";
   };
 
   return (
-    <Security oktaAuth={oktaAuth} restoreOriginalUri={restoreOriginalUri} onAuthRequired={customAuthHandler}>
+    <Security
+      oktaAuth={oktaAuth}
+      restoreOriginalUri={restoreOriginalUri}
+      onAuthRequired={customAuthHandler}
+    >
       <div className="d-flex flex-column min-vh-100">
         <Navbar />
         <div className="flex-grow-1">
@@ -31,9 +38,14 @@ const App = () => {
             <Route path="/home" element={<HomePage />} />
             <Route path="/" element={<HomePage />} />
             <Route path="/search" element={<SearchBooksPage />} />
+            <Route path="/reviewlist/:bookId" element={<ReviewListPage />} />
             <Route path="/checkout/:bookId" element={<BookCheckoutPage />} />
-            <Route path='/login' element={<LoginWidget config={oktaConfig} />} />
-            <Route path='/login/callback' element={<LoginCallback />} />
+            <Route path="/login" element={<LoginWidget config={oktaConfig} />}/>
+            <Route path="/login/callback" element={<LoginCallback />} />
+            <Route path="/shelf" element={ <RequireAuth> <ShelfPage /> </RequireAuth> }/>
+            <Route path="/messages" element={ <RequireAuth> <MessagesPage /> </RequireAuth> }/>
+
+            {/* <SecureRoute path='/shelf' element={<ShelfPage />} /> */}
           </Routes>
         </div>
         <Footer />
