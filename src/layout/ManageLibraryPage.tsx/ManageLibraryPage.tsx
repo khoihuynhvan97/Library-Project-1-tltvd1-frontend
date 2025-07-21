@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { Navigate } from 'react-router-dom';
 import { AdminMessages } from './components/AdminMessages';
 import { AddNewBook } from './components/AddNewBook';
+import { ChangeQuantityOfBooks } from './components/ChangeQuantityOfBooks';
 // import { Redirect } from 'react-router-dom';
 // import { AddNewBook } from './components/AddNewBook';
 // import { AdminMessages } from './components/AdminMessages';
@@ -68,9 +69,9 @@ export const ManageLibraryPage = () => {
                     </div>
                     <div className='tab-pane fade' id='nav-quantity' role='tabpanel' aria-labelledby='nav-quantity-tab'>
                        {/* Change Quantity */}
-                       {changeQuantityOfBooksClick ? <>Change Quantity</> : <></>}
+                       {/* {changeQuantityOfBooksClick ? <>Change Quantity</> : <></>} */}
                        
-                       {/* {changeQuantityOfBooksClick ? <ChangeQuantityOfBooks/> : <></>} */}
+                       {changeQuantityOfBooksClick ? <ChangeQuantityOfBooks/> : <></>}
                     </div>
                     <div className='tab-pane fade' id='nav-messages' role='tabpanel' aria-labelledby='nav-messages-tab'>
                         {/* Admin Messages */}
