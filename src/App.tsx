@@ -15,6 +15,7 @@ import { ShelfPage } from "./layout/ShelfPage/ShelfPage";
 import RequireAuth from "./layout/Utils/RequireAuth";
 import { MessagesPage } from "./layout/MessagesPage/MessagesPage";
 import { ManageLibraryPage } from "./layout/ManageLibraryPage.tsx/ManageLibraryPage";
+import { PaymentPage } from "./layout/PaymentPage/PaymentPage";
 const oktaAuth = new OktaAuth(oktaConfig);
 
 const App = () => {
@@ -46,6 +47,7 @@ const App = () => {
             <Route path="/shelf" element={ <RequireAuth> <ShelfPage /> </RequireAuth> }/>
             <Route path="/messages" element={ <RequireAuth> <MessagesPage /> </RequireAuth> }/>
             <Route path="/admin" element={ <RequireAuth> <ManageLibraryPage /> </RequireAuth> }/>
+            <Route path="/fees" element={ <RequireAuth> <PaymentPage/> </RequireAuth> }/>
 
 
             {/* <SecureRoute path='/shelf' element={<ShelfPage />} /> */}
